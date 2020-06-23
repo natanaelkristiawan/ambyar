@@ -1,0 +1,191 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Typography :: Heading
+//  *   CH02 - Typography :: Paragraph
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+
+
+
+//================================================================================================================
+//  *   CH02 - Typography :: Heading
+//================================================================================================================
+@include headings() {
+    &.heading {
+        color: $black-100;
+        font-weight: 500;
+    }
+
+    &.subheading {
+        color: $black-300;
+    }
+
+    &.accent {
+        color: $main-100;
+    }
+
+    &.warning {
+        color: $warning-dark;
+    }
+
+    &.positive {
+        color: $positive-dark;
+    }
+
+    &.negative {
+        color: $negative-dark;
+    }
+
+    &.white {
+        color: $white;;
+    }
+}
+
+h1 {
+    font-size: 52px;
+    line-height: 64px;
+}
+
+h2 {
+    font-size: 44px;
+    line-height: 54px;
+}
+
+h3 {
+    font-size: 32px;
+    line-height: 44px;
+}
+
+h4 {
+    font-size: 26px;
+    line-height: 32px;
+}
+
+h5 {
+    font-size: 20px;
+    line-height: 26px;
+}
+
+h6 {
+    font-size: 24px;
+    line-height: 32px;
+
+    @include breakpoint-max(xs) {
+        font-size: 18px;
+        line-height: 24px;    
+    }
+
+    &.small {
+        font-size: 18px;
+        line-height: 24px;
+
+        @include breakpoint-max(xs) {
+            font-size: 16px;
+            line-height: 24px;    
+        }    
+    }
+
+    &.xsmall {
+        font-size: 16px;
+        line-height: 24px;
+
+        @include breakpoint-max(xs) {
+            font-size: 14px;
+            line-height: 21px;
+        }    
+    }
+}
+
+
+//================================================================================================================
+//  *   CH02 - Typography :: Paragraph
+//================================================================================================================
+p,
+span,
+b,
+i,
+u,
+strong,
+label {
+    &.body-1 {
+        font-size: 16px;
+        line-height: 24px;    
+
+        @include breakpoint-max(xs) {
+            font-size: 15px;
+            line-height: 22px;
+        }
+    }
+
+    &.body-2 {
+        font-size: 15px;
+        line-height: 22px;
+
+        @include breakpoint-max(xs) {
+            font-size: 14px;
+            line-height: 22px;
+        }
+    }
+
+    &.small-1 {
+        font-size: 14px;
+        line-height: 22px;
+
+        @include breakpoint-max(xs) {
+            font-size: 12px;
+            line-height: 16px;    
+        }
+    }
+
+    &.small-2 {
+        font-size: 12px;
+        line-height: 16px;
+
+        @include breakpoint-max(xs) {
+            font-size: 11px;
+            line-height: 16px;
+        }
+    }
+
+    &.medium {
+        font-weight: 500;
+    }
+
+    &.accent {
+        color: $main-100;
+    }
+
+    &.primary {
+        color: $black-100;
+    }
+
+    &.secondary {
+        color: $black-300;
+    }
+
+    &.triary {
+        color: $black-500;
+    }
+
+    &.warning {
+        color: $warning-dark;
+    }
+
+    &.positive {
+        color: $positive-dark;
+    }
+
+    &.negative {
+        color: $negative-dark;
+    }
+
+    &.white {
+        color: $white;;
+    }
+}

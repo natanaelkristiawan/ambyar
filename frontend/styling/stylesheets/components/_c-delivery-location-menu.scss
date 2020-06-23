@@ -1,0 +1,179 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Component Delivery Location
+//  *   CH03 - Component Delivery Location :: Dropdown List
+//  *   CH04 - Component Delivery Location :: is Expanded
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$thumbnail-map-delivery-location-box-shadow: rgba(0, 0, 0, .08);
+$thumbnail-map-delivery-location-border-radius: 4px;
+$map-spot-box-shadow: rgba(0, 0, 0, .15);
+$delivery-location-list-border-color: $black-900;
+
+
+//================================================================================================================
+//  *   CH02 - Component Delivery Location
+//================================================================================================================
+.c-delivery-location .c-card {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    position: relative;
+
+    hr {
+        border: none;
+        border-top: 1px dashed $black-900;
+        display: block;
+        height: 1px;
+        margin: 20px auto;
+        width: calc(100% - 30px);
+    }
+
+    + .c-card {
+        @include absolute(top 73px left 15px);
+        display: none;
+        width: calc(100% - 1.875rem);
+        z-index: 25;
+
+        @include breakpoint-max(xs) {
+            top: 70px;
+        }
+    }
+}
+
+.c-delivery-location .map-thumbnail {
+    border-radius: $thumbnail-map-delivery-location-border-radius;
+    box-shadow: 0 2px 10px $thumbnail-map-delivery-location-box-shadow;
+    display: block;
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+    width: 80px;
+
+    @include breakpoint-max(xs) {
+        height: 60px;
+        width: 60px;
+    }
+
+    .map-spot {
+        @include center(both);
+        height: 34px;
+        width: 23px;
+        z-index: 2;
+
+        @include breakpoint-max(xs) {
+            height: 26px;
+            width: 17px;
+        }
+
+        .spot {
+            @include center(horizontal);
+            background-color: $main-100;
+            border-radius: 100%;
+            border: 1px solid $white;
+            box-shadow: 0 2px 4px $map-spot-box-shadow;
+            height: 23px;
+            top: 0;
+            width: 23px;
+            z-index: 2;
+
+            @include breakpoint-max(xs) {
+                height: 17px;
+                width: 17px;
+            }
+        }
+
+        .line {
+            @include center(horizontal);
+            background-color: $black-100;
+            height: 100%;
+            top: 0;
+            width: 1px;
+            z-index: 1;
+        }
+    }
+
+    .figure-thumbnail {
+        @include relative;
+        width: 100%;
+        z-index: 1;
+    }
+}
+
+.c-delivery-location .label-information {
+    @include flexgrid(row, flex-start, center, wrap);
+    color: $main-100;
+
+    svg {
+        height: 18px;        
+        width: 18px;
+
+        @include breakpoint-max(xs) {
+            height: 16px;
+            width: 16px;
+        }
+    }
+
+    span {
+        color: $black-300;
+        display: block;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH03 - Component Delivery Location :: Dropdown List
+//================================================================================================================
+.c-dropdown-list {
+    .list {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-top: 1px dashed $delivery-location-list-border-color;
+
+        &:first-of-type {
+            padding-top: 0;
+            border-top: none;
+        }
+
+        &:last-of-type {
+            padding-bottom: 0;
+        }
+
+        .c-link {
+            color: inherit;
+        }
+    }
+
+    .panel-right {
+        @include flexgrid(row, flex-end, center, wrap);
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH04 - Component Delivery Location :: is Expanded
+//================================================================================================================
+.c-delivery-location.is-expanded  {
+    .btn-rounded {
+        svg {
+            transform: rotate(-180deg);
+        }
+    }
+
+    .c-card {
+        display: block;
+        opacity: 0;
+
+        + .c-card {
+            display: block;
+            opacity: 1;
+        }
+    }
+}

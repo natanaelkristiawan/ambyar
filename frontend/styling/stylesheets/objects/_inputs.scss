@@ -1,0 +1,191 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Input Control Panel
+//  *   CH03 - Input Default
+//  *   CH04 - Input Icon
+//  *   CH05 - Input Search Result :: Checkout Delivery Location Address Filter by Google
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$input-background-color: $white;
+
+$input-default-border-color: $black-900;
+$input-default-font-color: $black-300;
+$input-default-placeholder-font-color: $black-700;
+
+$input-positive-border-color: $positive-default;
+$input-positive-font-color: $black-300;
+$input-positive-placeholder-font-color: $black-700;
+
+$input-negative-border-color: $negative-default;
+$input-negative-font-color: $black-300;
+$input-negative-placeholder-font-color: $black-700;
+
+
+
+//================================================================================================================
+//  *   CH02 - Input Control Panel
+//================================================================================================================
+.c-input-control-panel {
+    position: relative;
+
+    &.with-icon {
+        svg.feather {
+            @include center(vertical);
+            left: 10px;
+        }
+
+        &.icon-left {
+            .c-input {
+                padding-left: 36px;
+            }
+        }
+
+        &.icon-right {
+            .c-input {
+                padding-right: 36px;
+
+                + svg.feather {
+                    left: auto;
+                    right: 10px;
+                }
+            }            
+        }
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH03 - Input Control Panel
+//================================================================================================================
+.c-input-control-panel .c-input {
+    border: 1px solid $input-default-border-color;
+    color: $input-default-font-color;
+    display: block;
+    font-size: 14px;
+    line-height: normal;
+    padding: 10px;
+    transition: .3s all ease;
+    width: 100%;
+
+    @include breakpoint-max(xs) {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    &.input-big {
+        padding: 15px;
+
+        @include breakpoint-max(xs) {
+            padding: 12px;
+        }
+    }
+
+    &.medium {
+        font-weight: 500;
+
+        &::placeholder {
+            font-weight: normal;
+        }
+    }
+
+    &::placeholder {
+        color: $input-default-placeholder-font-color;
+    }
+}
+
+//  *   Input State Positive / Valid
+.c-input-control-panel .c-input.is-valid {
+    border-color: $input-positive-border-color;
+    color: $input-positive-font-color;
+
+    + svg.feather {
+        opacity: 1;
+        stroke: $input-positive-border-color;
+    }
+}
+
+//  *   Input State Negative / Invalid
+.c-input-control-panel .c-input.is-invalid {
+    border-color: $input-negative-border-color;
+    color: $input-negative-font-color;
+
+    + svg.feather {
+        opacity: 1;
+        stroke: $input-negative-border-color;
+    }
+}
+
+
+.c-input-control-panel.c-phone-number {
+    #phone-area-code {
+        @include absolute(bottom 0 left 0);
+        border-right: 1px solid $input-default-border-color;
+        color: $input-default-font-color;
+        padding: 11px 10px;
+        width: 40px;
+
+        @include breakpoint-max(xs) {
+            padding: 8px 10px;
+        }
+
+        + .c-input {
+            padding-left: 50px;
+        }
+    }
+}
+
+
+//================================================================================================================
+//  *   CH04 - Input Icon
+//================================================================================================================
+.c-input-control-panel svg.feather {
+    stroke: $input-default-font-color;
+
+    &.is-hidden {
+        opacity: 0;
+        transition: .3s all ease;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH05 - Input Search Result :: Checkout Delivery Location Address Filter by Google
+//================================================================================================================
+.pac-container {     
+    border-radius: 0 !important;
+    border: 1px solid $input-default-border-color !important;
+    box-shadow: none !important;
+    box-sizing: content-box !important;
+    margin-top: 10px !important;
+    max-height: 220px !important;
+    overflow: scroll !important;
+
+    @include breakpoint-max(xs) {
+        margin-top: 5px !important;
+    }
+
+    .pac-item {
+        border-top: 1px solid $input-default-border-color !important;
+        padding: 5px 10px !important;
+
+        .pac-item-query {
+            color: $black-300;
+            padding-right: 5px !important;
+        }
+    }
+}
+
+.pac-container.pac-logo::after {
+    background-position-x: calc(100% - 10px) !important;
+    border-top: 1px solid $input-default-border-color !important;
+    height: 30px !important;
+    padding: 5px 10px !important;
+}

@@ -1,0 +1,150 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Setup Base Layout
+//  *   CH03 - Auth Form
+//  *   CH04 - Auth Form :: Form Header
+//  *   CH05 - Auth Form :: Form Body
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+
+
+
+//================================================================================================================
+//  *   CH02 - Setup Base Layout
+//================================================================================================================
+.l-form-login {
+    position: relative;
+    min-height: 100%;
+    width: 100%;
+
+    .d-overlay {
+        @include fixed(top 0 right 0 bottom 0 left 0);
+        height: 100%;
+        overflow-y: auto;
+        width: 100%;
+
+        .d-absolute {
+            @include absolute(top 0 right 0 bottom 0 left 0);
+        }
+    }
+
+    .d-table {
+        display: table;
+        height: 100%;
+        width: 100%;
+
+        .d-table-cell {
+            display: table-cell;
+            padding: 2rem 0;
+            position: relative;
+            vertical-align: middle;
+        }
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH03 - Auth Form
+//================================================================================================================
+.l-form-login .auth-form {
+    padding-bottom: 20px;
+    padding-top: 20px;
+
+    @include breakpoint(lg) {
+        padding-bottom: 30px;
+        padding-top: 30px;
+    }
+
+}
+
+//  * Validation
+.l-form-login .auth-form label.negative {
+    &.u-display-block {
+        + .c-input-control-panel {
+            .c-input {
+                border-color: $negative-dark;
+                color: $negative-dark;
+    
+                &::placeholder {
+                    color: $negative-dark;
+                }
+            }
+
+            .feather {
+                stroke: $negative-dark;
+            }
+        }    
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH04 - Auth Form :: Form Header
+//================================================================================================================
+.l-form-login .auth-form .form-header {
+    padding-bottom: 20px;
+
+    @include breakpoint(lg) {
+        padding-bottom: 30px;
+    }
+
+    .brand-logo {
+        padding-bottom: 20px;
+    }
+
+    h6 {
+        font-weight: normal;
+        padding-top: 5px;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH05 - Auth Form :: Form Body
+//================================================================================================================
+.c-cashier-form-login {
+    .c-input-control-panel {
+        margin-bottom: 15px;
+
+        &.with-icon.icon-right {
+            .c-input {
+                padding-right: 40px;
+            }
+
+            .btn-eye {
+                @include absolute(top 0 right 0);
+                @include flexgrid(column, center, center, wrap);
+                display: block;
+                width: 40px;
+                height: 40px;
+        
+                .feather {
+                    @include center(both);
+                }
+            }
+        }
+    }
+
+    .btn-action-wrapper {
+        padding-top: 10px;
+
+        .o-button {            
+            font-size: 14px;
+            width: 100%;
+
+            @include breakpoint-max(xs) {
+                font-size: 13px;
+                height: 40px;
+            }
+        }
+    }
+}

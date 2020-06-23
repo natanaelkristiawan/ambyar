@@ -1,0 +1,159 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Component Fragment
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$product-cat-menu-border-color: $main-100;
+$product-cat-menu-background-color: $main-100;
+$product-cat-menu-label-color: $white;
+$product-cat-menu-dropdown-background-color: $white;
+$product-cat-menu-dropdown-box-shadow: rgba(0, 0, 0, .08);
+$product-cat-menu-dropdown-list-hover-background-color: $main-100;
+$product-cat-menu-dropdown-list-hover-color: $white;
+$product-cat-menu-dropdown-list-color: $black-300;
+$product-cat-menu-dropdown-list-highlighted-color: $black-900;
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+#product-cat-menu {
+    @include fixed(top 58px left 0);
+    min-height: 50px;
+    transform: translateY(-50px);
+    transition: .3s all ease;
+    width: 100%;
+    z-index: 40;
+
+    &.is-expanded {
+        transform: translateY(0);
+    }
+
+    + .push-main-navigation {
+        padding-top: calc(58px + 15px);
+    }
+}
+
+#product-cat-menu .selectric {
+    background-color: $product-cat-menu-background-color;
+    border-color: $product-cat-menu-border-color;
+}
+
+#product-cat-menu .selectric .label {
+    color: $product-cat-menu-label-color;
+    font-size: 16px;
+    font-weight: 500;
+    height: 48px;
+    line-height: 48px;
+    margin: 0 65px 0 15px;
+
+    @include breakpoint-max(xs) {
+        font-size: 14px;
+    }
+}
+
+#product-cat-menu .selectric .button {
+    @include flexgrid(column, center, center, wrap);
+    background-color: transparent;
+    color: $product-cat-menu-label-color;
+    width: 50px;
+    height: 48px;
+    right: 15px;
+
+    &::after {
+        display: none;
+    }
+}
+
+#product-cat-menu .selectric-open .selectric .button svg {
+    transform: rotate(180deg);
+}
+
+#product-cat-menu .selectric-items {
+    background-color: $product-cat-menu-dropdown-background-color;
+    border: none;
+    box-shadow: 0px 4px 24px $product-cat-menu-dropdown-box-shadow;
+}
+
+#product-cat-menu .selectric-items ul {
+    padding-bottom: 10px;
+    padding-top: 10px;
+
+    @include breakpoint-max(xs) {
+        padding-bottom: 8px;
+        padding-top: 8px;
+    }
+
+    li {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;        
+        padding: 0;
+        position: relative;
+    
+        @include breakpoint-max(xs) {
+            font-size: 14px;
+        }
+
+        &.selected {
+            background-color: transparent;
+        
+            .c-link {
+                color: $product-cat-menu-dropdown-list-highlighted-color;
+            }
+        }
+        
+        &.highlighted {
+            background-color: transparent;
+            
+            .c-link {
+                color: $product-cat-menu-dropdown-list-color;
+            }
+        
+            &.selected {
+                .c-link {
+                    color: $product-cat-menu-dropdown-list-highlighted-color;
+                }
+            }
+        }        
+    }
+}
+
+#product-cat-menu .selectric-items ul li .c-link {
+    color: $product-cat-menu-dropdown-list-color;
+    display: block;
+    padding: 10px 65px 10px 15px;
+
+    @include breakpoint-max(xs) {
+        padding-bottom: 8px;
+        padding-top: 8px;    
+    }
+}
+
+#product-cat-menu .selectric-items ul li:hover {
+    background-color: $product-cat-menu-dropdown-list-hover-background-color;
+
+    .c-link {
+        color: $product-cat-menu-dropdown-list-hover-color;
+    }
+}
+
+#product-cat-menu .selectric-items ul li .c-link .value {
+    @include absolute(top 0 right 15px);
+    display: block;
+    height: 100%;
+    padding: 10px 5px;
+    text-align: center;
+    width: 50px;
+
+    @include breakpoint-max(xs) {
+        padding: 8px 5px;
+    }
+}

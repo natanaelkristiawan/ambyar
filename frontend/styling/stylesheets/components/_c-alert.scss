@@ -1,0 +1,78 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Setup Components
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$alert-warning-background-color: $warning-light;
+$alert-warning-border-color: $warning-default;
+$alert-warning-font-color: $warning-dark;
+
+$alert-negative-background-color: $negative-light;
+$alert-negative-border-color: $negative-default;
+$alert-negative-font-color: $negative-dark;
+
+$alert-positive-background-color: $positive-light;
+$alert-positive-border-color: $positive-default;
+$alert-positive-font-color: $positive-dark;
+
+//================================================================================================================
+//  *   CH02 - Setup Components
+//================================================================================================================
+.c-alert {
+    padding: 8px 10px;
+    border: 1px solid transparent;
+    visibility: visible;
+
+    &.alert-warning {
+        border-color: $alert-warning-border-color;        
+        background-color: $alert-warning-background-color;
+
+        p {
+            color: $alert-warning-font-color;
+        }
+    }
+
+    &.alert-positive {
+        border-color: $alert-positive-border-color;        
+        background-color: $alert-positive-background-color;
+
+        p {
+            color: $alert-positive-font-color;
+        }
+    }
+
+    &.alert-negative {
+        border-color: $alert-negative-border-color;        
+        background-color: $alert-negative-background-color;
+
+        p {
+            color: $alert-negative-font-color;
+        }
+    }
+}
+
+.c-alert.is-hidden {
+    display: none;
+    visibility: hidden;
+}
+
+.c-message {
+    position: relative;
+
+    .btn-message-close {
+        @include absolute(top 5px right 25px);
+        display: block;
+        height: 32px;
+        width: 32px;
+
+        .feather {
+            @include center(both);
+        }
+    }
+}

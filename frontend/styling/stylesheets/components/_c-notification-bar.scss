@@ -1,0 +1,97 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Setup Component
+//  *   CH02 - Component Themes
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$notification-border-radius: 4px;
+
+$notification-background-color-primary: $main-100;
+$notification-font-color-primary: $white;
+
+$notification-background-color-warning: $warning-default;
+$notification-font-color-warning: $warning-dark;
+
+$notification-background-color-positive: $positive-default;
+$notification-font-color-positive: $positive-dark;
+
+$notification-background-color-negative: $negative-default;
+$notification-font-color-negative: $negative-dark;
+
+
+
+//================================================================================================================
+//  *   CH02 - Setup Component
+//================================================================================================================
+.c-notification-bar {
+    @include fixed(top 0 left 0);
+    cursor: pointer;
+    display: block;
+    padding-top: 8px;
+    transform: translateY(-100%);
+    transition: .3s all ease;
+    visibility: visible;
+    width: 100%;
+
+    z-index: 100;
+    &.is-expanded {
+        transform: translateY(0);
+    }
+
+    .l-section-fluid {
+        padding-left: $half-gutter-width;
+        padding-right: $half-gutter-width;
+    }
+
+    .bounds {
+        border-radius: $notification-border-radius;
+        padding: 15px;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH02 - Component Themes
+//================================================================================================================
+//  *   Primary
+.c-notification-bar.primary .bounds {
+    background-color: $notification-background-color-primary;
+
+    p {
+        color: $notification-font-color-primary;
+    }
+}
+
+//  *   Warning
+.c-notification-bar.warning .bounds {
+    background-color: $notification-background-color-warning;
+
+    p {
+        color: $notification-font-color-warning;
+    }
+}
+
+//  *   Positive
+.c-notification-bar.positive .bounds {
+    background-color: $notification-background-color-positive;
+
+    p {
+        color: $notification-font-color-positive;
+    }
+}
+
+//  *   Negative
+.c-notification-bar.negative .bounds {
+    background-color: $notification-background-color-negative;
+
+    p {
+        color: $notification-font-color-negative;
+    }
+}

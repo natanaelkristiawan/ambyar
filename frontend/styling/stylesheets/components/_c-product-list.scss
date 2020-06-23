@@ -1,0 +1,115 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Components Fragments
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$product-list-title-color: $black-100;
+$product-list-description-color: $black-300;
+$product-list-price-color: $black-100;
+$product-list-image-border-radius: 4px;
+
+
+
+//================================================================================================================
+//  *   CH02 - Components Fragments
+//================================================================================================================
+.product-list-container {
+    width: 100%;
+
+    .c-product-list {
+        padding-bottom: 30px;
+    }        
+}
+
+.c-product-list .left,
+.c-product-list .right {
+    padding: 0 $l-section-gutter;
+}
+
+.c-product-list .left {
+    width: 110px;
+
+    @include breakpoint-max(xs) {
+        width: 90px;
+    }
+
+    .image {
+        border-radius: $product-list-image-border-radius;
+        overflow: hidden;
+
+        img {
+            height: 80px;
+            width: 80px;
+    
+            @include breakpoint-max(xs) {
+                height: 60px;
+                width: 60px;
+            }
+        }
+    }
+}
+
+.c-product-list .right {
+    width: calc(100% - 110px);
+    padding-left: 0;
+    
+    @include breakpoint-max(xs) {
+        width: calc(100% - 90px);
+    }
+
+    .top {
+        .title {
+            color: $product-list-title-color;
+            display: block;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 24px;
+        }
+    
+        p {
+            color: $product-list-description-color;
+        }
+    }
+
+    .bottom {
+        @include flexgrid(row, space-between, center, wrap);
+        width: 100%;
+    
+        span.price {
+            color: $product-list-price-color;
+            font-weight: 500;
+        }
+
+        .btn-action {
+            @include flexgrid(row, flex-end, center, wrap);
+
+            .btn-primary {
+                &.is-hidden {
+                    display: none;
+                }
+            }
+
+            .btn-accent {
+                display: none;
+
+                &.is-visible {
+                    display: block;
+                }
+            }
+
+            .btn-product-qty {
+                display: none;
+
+                &.is-visible {
+                    display: flex;
+                }
+            }
+        }
+    }    
+}

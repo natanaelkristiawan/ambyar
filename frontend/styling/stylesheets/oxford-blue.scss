@@ -1,0 +1,118 @@
+// The lib/ folder contains a single file — _lib.scss.
+// This _lib.scss declares all libraries I use for the project.
+// In case you were wondering, the libraries I use are:
+// Normalize.css
+// sass-mediaqueries (for breakpoints)
+// Themify (if I’m working with themes)
+@import 'lib/normalize';
+@import 'lib/media-queries';
+@import 'lib/themes/oxford-blue';
+
+
+
+// The helpers/ folder contains convenient mixins and functions I use in the project.
+// In case you were wondering, the helpers I use are:
+// Mixin generate font family
+// Mixin element positioning
+// Mixin centered position of an element in a short 2 lines of code
+// Mixin converting font size from px to rem
+// Mixin converting line height from px to rem
+// Mixin generates the image in either standard size or retina display version
+// Mixin clearfix
+// Mixin CSS triangle
+// Extend embed video
+@import 'helpers/helpers';
+@import 'helpers/breakpoint';
+@import 'helpers/flex';
+
+
+
+// The variables/ folder is where I store variables used in the project.
+// As you can tell from my main.scss file, I use only four types of variables:
+@import 'variables/colors';
+@import 'variables/breakpoints';
+@import 'variables/fonts';
+@import 'variables/layouts';
+
+
+
+// The base/ folder is where I write any resets in addition to Normalize.css.
+// I’m pretty aggressive with resetting margins, paddings and the looks of input and button elements
+@import 'base/core';
+
+
+
+// The Vendors folder is where I put all third party styles.
+@import 'vendors/selectric';
+// Other vendors style as necessary
+
+
+
+// The layouts/ folder is where I write layouts that apply globally to my project.
+@import 'layouts/layouts';
+@import 'layouts/landing-page';
+@import 'layouts/checkout-page';
+@import 'layouts/end-screen-page';
+@import 'layouts/order-history-page';
+@import 'layouts/modal';
+
+// Cashier Dashboard
+@import 'layouts/cashier-form-login';
+@import 'layouts/cashier-dashboard';
+
+
+
+// Objects (.o-) are the smallest building blocks of a website.
+// They have the following properties:
+// 1. Objects uses the .o- prefix.
+// 2. They cannot contain other objects or components.
+// 3. They are context independent.
+// 4. Certain objects can ignore the .o- prefix when it makes sense.
+@import 'objects/buttons';
+@import 'objects/inputs';
+@import 'objects/typography';
+// Other objects as necessary
+
+
+
+// Components (.c-) are the larger building blocks of a website.
+// They have the following properties:
+// 1. They use the .c- prefix.
+// 2. They can contain other objects or components.
+// 3. They are context aware.
+@import 'components/c-placeholder-loading';
+@import 'components/c-notification-bar';
+@import 'components/c-product-cat-menu';
+@import 'components/c-delivery-location-menu';
+@import 'components/c-product-category-slider';
+@import 'components/c-product-list';
+@import 'components/c-order';
+@import 'components/c-search-bar';
+@import 'components/c-product-note';
+@import 'components/c-share-social-media';
+
+// Checkout Page
+@import 'components/checkout/c-checkout-delivery-location';
+@import 'components/checkout/c-checkout-payment-method';
+@import 'components/checkout/c-checkout-promo-code';
+//
+
+// End Screen
+@import 'components/end-screen/c-end-screen-heading';
+@import 'components/end-screen/c-end-screen-time-countdown';
+@import 'components/end-screen/c-end-screen-payment-detail';
+//
+
+// Cashier Dashboard
+@import 'components/cashier-dashboard/c-nav-tabs';
+//
+
+@import 'components/link';
+@import 'components/c-card';
+@import 'components/c-checkbox';
+@import 'components/c-radio';
+@import 'components/c-main-navigation';
+@import 'components/c-footer';
+@import 'components/c-swiper-slider';
+@import 'components/c-alert';
+// Other components as necessary

@@ -1,0 +1,70 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Extend Variabels
+//  *   CH02 - Link State
+
+
+
+//================================================================================================================
+//  *   CH01 - Extend Variabels
+//================================================================================================================
+%reset-link {
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+
+    &.disabled {
+        cursor: not-allowed;
+        opacity: .65;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH02 - Link State
+//================================================================================================================
+.c-link {
+    // Link on state default
+    @extend %reset-link;
+    color: $main-100;
+
+    // Link on state hover
+    &:not(.disabled):hover {
+        color: $main-100;
+    }
+
+    // Link on state active
+    &:not(.disabled):active,
+    &:not(.disabled).active {
+        color: #ff0000;
+    }
+}
+
+.c-link svg.feather {
+    &.default {
+        stroke: $black-100;
+    }
+
+    &.primary {
+        stroke: $main-100;
+    }
+
+    &.warning {
+        color: $warning-dark;
+    }
+
+    &.positive {
+        color: $positive-dark;
+    }
+
+    &.negative {
+        color: $negative-dark;
+    }
+
+    &.white {
+        color: $white;;
+    }    
+}

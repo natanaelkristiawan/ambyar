@@ -1,0 +1,626 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Extend Variables & Elements
+//  *   CH03 - Button State
+//  *   CH04 - Button Theme
+//  *   CH05 - Button Product QTY
+//  *   CH06 - Button Order & Help
+//  *   CH07 - Button Social Media
+//  *   CH08 - Button Back To Top
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+// padding top & bottom
+$btn-padding-vertical-sm: .25rem;
+$btn-padding-vertical-md: .5rem;
+
+// padding left & right
+$btn-padding-horizontal-sm: .5rem;
+$btn-padding-horizontal-md: 1rem;
+
+// button height
+$btn-height-sm: 45px;
+$btn-height-md: 50px;
+
+// button theme
+// -- Global
+$button-border-radius: 4px;
+
+// -- button primary
+$btn-bg-primary: $main-100;
+$btn-fc-primary: $white;
+
+$btn-bg-primary-hover: $main-100;
+$btn-fc-primary-hover: $white;
+
+$btn-bg-primary-active: $main-100;
+$btn-fc-primary-active: $white;
+
+// -- button white
+$btn-bg-white: $white;
+$btn-fc-white: $black-300;
+
+$btn-bg-white-hover: $white;
+$btn-fc-white-hover: $black-300;
+
+$btn-bg-white-active: $white;
+$btn-fc-white-active: $black-300;
+
+// -- button accent
+$btn-bg-accent: $accent-100;
+$btn-fc-accent: $white;
+
+$btn-bg-accent-hover: $main-100;
+$btn-fc-accent-hover: $white;
+
+$btn-bg-accent-active: $accent-100;
+$btn-fc-accent-active: $white;
+
+// -- button warning
+$btn-bg-warning: $warning-default;
+$btn-fc-warning: $white;
+
+$btn-bg-warning-hover: $warning-default;
+$btn-fc-warning-hover: $white;
+
+$btn-bg-warning-active: $warning-default;
+$btn-fc-warning-active: $white;
+
+// -- button positive
+$btn-bg-positive: $positive-default;
+$btn-fc-positive: $white;
+
+$btn-bg-positive-hover: $positive-default;
+$btn-fc-positive-hover: $white;
+
+$btn-bg-positive-active: $positive-default;
+$btn-fc-positive-active: $white;
+
+// -- button negative
+$btn-bg-negative: $negative-default;
+$btn-fc-negative: $white;
+
+$btn-bg-negative-hover: $negative-default;
+$btn-fc-negative-hover: $white;
+
+$btn-bg-negative-active: $negative-default;
+$btn-fc-negative-active: $white;
+
+// -- button ghost
+$btn-bg-ghost: transparent;
+$btn-fc-ghost: #000000;
+
+$btn-bg-ghost-hover: $main-100;
+$btn-fc-ghost-hover: $white;
+
+$btn-bg-ghost-active: #00ff00;
+$btn-fc-ghost-active: $white;
+
+// -- button disabled
+$btn-bg-disabled: $black-900;
+$btn-fc-disabled: $black-500;
+
+// -- button qty
+$btn-bg-qty: transparent;
+$btn-bc-qty: $main-100;
+$btn-fc-qty: $main-100;
+
+$btn-bg-qty-hover: $white;
+$btn-fc-qty-hover: $main-100;
+
+$btn-bg-qty-active: $main-100;
+$btn-fc-qty-active: $white;
+
+
+
+//================================================================================================================
+//  *   CH02 - Extend Variables & Elements
+//================================================================================================================
+%reset-button {
+    height: $btn-height-md;
+    padding: $btn-padding-vertical-md $btn-padding-horizontal-md;
+    overflow: visible;
+    text-transform: none;
+    transition: all 0.2s ease-in-out;
+
+    @include breakpoint-max(xs) {
+        padding: $btn-padding-vertical-sm $btn-padding-horizontal-sm;
+        height: $btn-height-sm;
+    }
+
+    &:not(:disabled):not(.disabled) {
+        cursor: pointer;
+    }
+
+    &:disabled,
+    &.disabled {
+        background-color: $btn-bg-disabled;
+        color: $btn-fc-disabled;
+        cursor: not-allowed;
+    }
+}
+
+a.o-button {    
+    cursor: pointer;
+    display: inline-block;
+    height: auto;
+    line-height: $btn-height-md;
+    outline: none;    
+    padding: 0 $btn-padding-horizontal-md;
+    text-decoration: none;
+
+    @include breakpoint-max(xs) {
+        line-height: $btn-height-sm;
+        padding: 0 $btn-padding-horizontal-sm;
+    }
+}
+
+.o-button.btn-small {
+    border-radius: $button-border-radius;
+    font-weight: 500;
+    line-height: 16px;
+    padding: 5px 8px;
+    vertical-align: middle;
+
+    svg {
+        vertical-align: middle;
+    }
+}
+
+button.btn-small {
+    font-size: 11px;
+    height: 26px;
+}
+
+.o-button.btn-with-icon {
+    @include flexgrid(row, center, center, wrap);
+}
+
+.o-button.btn-rounded {
+    @include flexgrid(column, center, center, wrap);
+    border-radius: 100%;
+    height: 50px;
+    padding: 0;
+    position: relative;
+    width: 50px;
+
+    &::before {
+        @include center(both);
+        border-radius: 100%;
+        content: '';
+        height: calc(100% - 8px);
+        width: calc(100% - 8px);
+        z-index: 1;
+    }
+
+    > * {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH03 - Button State
+//================================================================================================================
+.o-button {
+    // Button on state default
+    @extend %reset-button;
+    border-radius: $button-border-radius;
+
+    // Button on state hover
+    &:not(:disabled):not(.disabled):hover {
+        color: $main-100;
+    }
+
+    // Button on state active
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        color: #ff0000;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH04 - Button Theme
+//================================================================================================================
+.btn-primary    {
+    background-color: $btn-bg-primary;
+    color: $btn-fc-primary;
+
+    // Button on state hover
+    &:not(:disabled):not(.disabled):hover {
+        background-color: $btn-bg-primary-hover;
+        color: $btn-fc-primary-hover;
+    }
+
+    // Button on state active
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        background-color: $btn-bg-primary-active;
+        color: $btn-fc-primary-active;
+    }
+}
+
+.btn-white    {
+    background-color: $btn-bg-white;
+    color: $btn-fc-white;
+
+    // Button on state hover
+    &:not(:disabled):not(.disabled):hover {
+        background-color: $btn-bg-white-hover;
+        color: $btn-fc-white-hover;
+    }
+
+    // Button on state active
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        background-color: $btn-bg-white-active;
+        color: $btn-fc-white-active;
+    }
+}
+
+
+.btn-accent    {
+    background-color: $btn-bg-accent;
+    color: $btn-fc-accent;
+
+    // Button on state hover
+    &:not(:disabled):not(.disabled):hover {
+        background-color: $btn-bg-accent-hover;
+        color: $btn-fc-accent-hover;
+    }
+
+    // Button on state active
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        background-color: $btn-bg-accent-active;
+        color: $btn-fc-accent-active;
+    }
+}
+
+.btn-warning    {
+    background-color: $btn-bg-warning;
+    color: $btn-fc-warning;
+
+    // Button on state hover
+    &:not(:disabled):not(.disabled):hover {
+        background-color: $btn-bg-warning-hover;
+        color: $btn-fc-warning-hover;
+    }
+
+    // Button on state active
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        background-color: $btn-bg-warning-active;
+        color: $btn-fc-warning-active;
+    }
+}
+
+.btn-positive    {
+    background-color: $btn-bg-positive;
+    color: $btn-fc-positive;
+
+    // Button on state hover
+    &:not(:disabled):not(.disabled):hover {
+        background-color: $btn-bg-positive-hover;
+        color: $btn-fc-positive-hover;
+    }
+
+    // Button on state active
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        background-color: $btn-bg-positive-active;
+        color: $btn-fc-positive-active;
+    }
+}
+
+.btn-negative    {
+    background-color: $btn-bg-negative;
+    color: $btn-fc-negative;
+
+    // Button on state hover
+    &:not(:disabled):not(.disabled):hover {
+        background-color: $btn-bg-negative-hover;
+        color: $btn-fc-negative-hover;
+    }
+
+    // Button on state active
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        background-color: $btn-bg-negative-active;
+        color: $btn-fc-negative-active;
+    }
+}
+
+.btn-whatsapp    {
+    background-color: $sc-whatsapp;
+    color: $white;
+
+    // Button on state hover
+    &:not(:disabled):not(.disabled):hover {
+        background-color: $sc-whatsapp;
+        color: $white;
+    }
+
+    // Button on state active
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        background-color: $sc-whatsapp;
+        color: $white;
+    }
+
+    // Custom Icon
+    .icn-custom.whatsapp {
+        @include img-retina('../img/styles/icons/whatsapp/icon--whatsapp-16', png, 16px, 16px, center, no-repeat);
+        @include relative(top -1px);
+        display: inline-block;
+        height: 16px;
+        margin-right: 5px;
+        vertical-align: middle;
+        width: 16px;
+    }
+}
+
+
+.btn-rounded.btn-primary {    
+    color: $btn-fc-primary;
+    background-color: transparent;
+
+    &::before {
+        background-color: $btn-bg-primary;
+    }
+
+    // Button on state hover
+    &:not(:disabled):not(.disabled):hover {
+        color: $btn-fc-primary-hover;
+        background-color: transparent;
+
+        &::before {
+            background-color: $btn-bg-primary-hover;
+        }
+    }
+
+    // Button on state active
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        color: $btn-fc-primary-active;
+        background-color: transparent;
+
+        &::before {
+            background-color: $btn-bg-primary-active;
+        }
+    }
+}
+
+.btn-ghost    {
+    background-color: $btn-bg-ghost;
+    color: $btn-fc-ghost;
+
+    // Button on state hover
+    &:not(:disabled):not(.disabled):hover {
+        background-color: $btn-bg-ghost-hover;
+        color: $btn-fc-ghost-hover;
+    }
+
+    // Button on state active
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        background-color: $btn-bg-ghost-active;
+        color: $btn-fc-ghost-active;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH05 - Button Product QTY
+//================================================================================================================
+.btn-product-qty {
+    @include flexgrid(row, flex-start, center, wrap);
+    border-radius: $button-border-radius;
+    border: 1px solid $btn-bc-qty;
+    cursor: pointer;
+
+    .inc,
+    .dec {
+        height: 25px;
+        width: 25px;
+        text-align: center;
+        font-size: 20px;
+        line-height: 25px;
+        color: $btn-fc-qty
+    }
+
+    .dec {
+        order: -1;
+    }
+
+    input[type="number"] {
+        -moz-appearance:textfield;
+        background-color: transparent;
+        border: none;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: normal;
+        text-align: center;
+        width: 25px;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            appearance: none;
+            margin: 0;
+        }
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH06 - Button Order & Help
+//================================================================================================================
+a.o-button.btn-order,
+button.o-button.btn-order,
+a.o-button.btn-help,
+button.o-button.btn-help {
+    @include flexgrid(row, center, center, wrap);
+    border-radius: $button-border-radius * 2;
+    font-size: 14px;
+    font-weight: 500;
+    height: 55px;
+    line-height: normal;
+    position: relative;
+    width: 100%;
+
+    @include breakpoint-max(xs) {
+        font-size: 12px;
+        height: 45px
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH07 - Button Social Media
+//================================================================================================================
+.o-button.btn-share {
+    font-size: 14px;
+    border: 1px solid;
+
+    i {
+        margin-right: 10px;
+
+        @include breakpoint-max(xs) {
+            margin-right: 5px;
+        }            
+    }
+
+    .feather {
+        margin-right: 8px;
+        vertical-align: middle;
+
+        @include breakpoint-max(xs) {
+            margin-right: 3px;
+        }
+    }
+}
+
+// -- Whatsapp
+.o-button.btn-share.whatsapp {
+    background-color: $sc-whatsapp;
+    border-color: $sc-whatsapp;
+    color: $white;
+    line-height: 38px;
+
+    // Button on state hover
+    &:not(:disabled):not(.disabled):hover {
+        background-color: $sc-whatsapp;
+        border-color: $sc-whatsapp;
+        color: $white;
+    }
+
+    // Button on state active
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        background-color: $sc-whatsapp;
+        border-color: $sc-whatsapp;
+        color: $white;
+    }
+
+    // Custom Icon
+    .icn-custom.whatsapp {
+        @include relative(top -1px);
+        @include img-retina('../img/styles/icons/whatsapp/icon--whatsapp-16', png, 16px, 16px, center, no-repeat);
+        display: inline-block;
+        height: 16px;
+        vertical-align: middle;
+        width: 16px;
+    }
+}
+
+// -- Facebook
+.o-button.btn-share.facebook {
+    background-color: $sc-facebook;
+    border-color: $sc-facebook;
+    color: $white;
+    line-height: 38px;
+
+    // Button on state hover
+    &:not(:disabled):not(.disabled):hover {
+        background-color: $sc-facebook;
+        border-color: $sc-facebook;
+        color: $white;
+    }
+
+    // Button on state active
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        background-color: $sc-facebook;
+        border-color: $sc-facebook;
+        color: $white;
+    }
+}
+
+// -- Twitter
+.o-button.btn-share.twitter {
+    background-color: $sc-twitter;
+    border-color: $sc-twitter;
+    color: $white;
+    line-height: 38px;
+
+    // Button on state hover
+    &:not(:disabled):not(.disabled):hover {
+        background-color: $sc-twitter;
+        border-color: $sc-twitter;
+        color: $white;
+    }
+
+    // Button on state active
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        background-color: $sc-twitter;
+        border-color: $sc-twitter;
+        color: $white;
+    }
+}
+
+// -- Instagram
+.o-button.btn-share.instagram {
+    background-color: $white;
+    border-color: $sc-instagram;
+    color: $sc-instagram;
+    line-height: 38px;
+
+    // Button on state hover
+    &:not(:disabled):not(.disabled):hover {
+        background-color: $white;
+        border-color: $sc-instagram;
+        color: $sc-instagram;
+    }
+
+    // Button on state active
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        background-color: $white;
+        border-color: $sc-instagram;
+        color: $sc-instagram;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH08 - Button Back To Top
+//================================================================================================================
+.o-button.btn-back-to-top {
+    @include fixed(bottom 30px right 30px);
+    transition: .3s all ease-in-out;
+    z-index: 5;
+}

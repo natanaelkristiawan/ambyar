@@ -1,0 +1,68 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Payment Method Icon
+//  *   CH03 - Payment Method List
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$checkout-payment-method-list-border-color: $black-900;
+$checkout-payment-method-list-border-radius: 4px;
+
+
+
+
+//================================================================================================================
+//  *   CH02 - Payment Method Icon
+//================================================================================================================
+.c-checkout-payment-method .label,
+.c-checkout-shipping-method .label {
+    @include flexgrid(row, flex-start, center, wrap);
+
+    .payment-icon {
+        display: block;
+        margin-right: 10px;
+        width: auto;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH03 - Payment Method List
+//================================================================================================================
+
+.c-payment-method-list,
+.c-shipping-method-list {
+    padding-top: 10px;
+
+    .c-link {
+        display: block;
+    }
+
+    .panel {
+        @include flexgrid(row, flex-start, center, wrap);
+        border-radius: $checkout-payment-method-list-border-radius;
+        border: 1px solid $checkout-payment-method-list-border-color;
+        height: 50px;
+        padding: 10px;
+        width: 100%;
+
+        .icon {
+            margin-right: 10px;
+        }
+
+        h6 {
+            padding-right: 10px;
+        }
+
+        > span {
+            display: block;
+            margin-left: auto;
+        }
+    }
+}

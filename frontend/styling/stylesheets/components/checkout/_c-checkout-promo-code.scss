@@ -1,0 +1,70 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Setup Component Promo Code
+//  *   CH03 - Setup Component Promo List
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$promo-list-border-color: $black-900;
+$promo-list-border-radius: 4px;
+$promo-list-icon-fill: $main-100;
+$promo-list-title-border-color: $promo-list-border-color;
+
+
+//================================================================================================================
+//  *   CH02 - Setup Component Promo Code
+//================================================================================================================
+.c-checkout-promo-code .panel-right {
+    .o-button.is-hidden {
+        display: none;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH03 - Setup Component Promo List
+//================================================================================================================
+.c-promo-list {
+    flex-basis: auto;
+    margin-top: 15px;
+    width: 100%;
+
+    &:first-of-type {
+        margin-top: 0;
+    }
+}
+
+.c-promo-list .panel {
+    border-radius: $promo-list-border-radius;
+    border: 1px solid $promo-list-border-color;
+}
+
+.c-promo-list .panel .title {
+    border-bottom: 1px dashed $promo-list-title-border-color;
+    padding: 10px 10px 10px 44px;
+    position: relative;
+
+    .icon {
+        @include absolute(top 15 left 10px);
+        display: block;
+        height: auto;
+        width: 24px;        
+    }
+
+    // For Icon Default Promo List
+    svg.icon circle {
+        fill: $promo-list-icon-fill !important;
+    }
+}
+
+.c-promo-list .panel .btn-action-wrapper {
+    @include flexgrid(row, space-between, center, wrap);
+    padding: 10px;
+    width: 100%;
+}

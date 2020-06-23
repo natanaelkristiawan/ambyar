@@ -1,0 +1,61 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Component Setup
+//  *   CH03 - Modal Component Checkoit Delivery Location List
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$checkout-delivery-location-border-color: $black-900;
+$checkout-delivery-location-border-radius: 8px;
+
+
+
+//================================================================================================================
+//  *   CH02 - Component Setup
+//================================================================================================================
+.c-checkout-delivery-location {
+    .feather-x {
+        display: none;
+
+        &.is-visible {
+            display: block;
+        }
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH03 - Modal Component Checkoit Delivery Location List
+//================================================================================================================
+.c-checkout-delivery-location-list {
+    .c-link {
+        @include flexgrid(row, flex-start, center, wrap);
+        border-radius: $checkout-delivery-location-border-radius;
+        border: 1px solid $checkout-delivery-location-border-color;
+        margin-top: 15px;
+        padding: 0.9375rem;
+        width: 100%;
+
+        @include breakpoint-max(xs) {
+            margin-top: 10px;
+        }
+
+        &:first-of-type {
+            margin-top: 0;
+        }
+    }
+
+    .detail {
+        width: calc(100% - 31px);
+
+        span {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,137 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Main Components
+//  *   CH03 - Checkbox State
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$checkbox-height: 24px;
+$checkbox-width: 24px;
+
+// Default
+$checkbox-bg-color-default: transparent;
+$checkbox-border-color-default: $status--disabled;
+$checkbox-label-color-default: #333333;
+
+// Hover
+$checkbox-bg-color-hover: transparent;
+$checkbox-border-color-hover: $status--primary;
+
+// Disabled
+$checkbox-bg-color-disabled: transparent;
+$checkbox-border-color-disabled: $status--disabled;
+$checkbox-label-color-disabled: $status--disabled;
+
+// Checked
+$checkbox-bg-color-checked: $status--success;
+$checkbox-border-color-checked: $status--success;
+$checkbox-checkmark-color: $white;
+
+// Checked + Hover
+$checkbox-checked-bg-color-hover: $status--primary;
+$checkbox-checked-border-color-hover: $status--primary;
+
+// Checked + Disabled
+$checkbox-checked-bg-color-disabled: $status--disabled;
+$checkbox-checked-border-color-disabled: $status--disabled;
+
+
+
+//================================================================================================================
+//  *   CH02 - Main Components
+//================================================================================================================
+.c-checkbox {
+    @include relative();
+}
+
+.c-checkbox input + label {
+    @include relative();
+    color: $checkbox-label-color-default;
+    cursor: pointer;
+    display: block;
+    padding-left: calc(24px + 10px); // width of checkbox + gutter
+
+    // BOX
+    &::before {
+        @include absolute(top 0 left 0);
+        background: $checkbox-bg-color-default;
+        border: 1px solid $checkbox-border-color-default;
+        content: '';
+        height: $checkbox-height;
+        transition: .3s all linear;
+        width: $checkbox-width;
+    }
+
+    // Checkmark
+    &::after {
+        @include absolute(top 11px left 6px);
+        background-color: $checkbox-checkmark-color;
+        box-shadow: 
+            2px 0 0 $checkbox-checkmark-color, 
+            4px 0 0 $checkbox-checkmark-color, 
+            4px -2px 0 $checkbox-checkmark-color, 
+            4px -4px 0 $checkbox-checkmark-color, 
+            4px -6px 0 $checkbox-checkmark-color, 
+            4px -8px 0 $checkbox-checkmark-color;
+        content: '';
+        height: 2px;
+        transform: rotate(45deg) scale(0);
+        transition: .1s all linear;
+        width: 2px;
+    }
+}
+
+// Checkmark
+// * Could be replaced with an image 
+.c-checkbox input:checked + label {
+    &::after {
+        transform: rotate(45deg) scale(1);
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH03 - Checkbox State
+//================================================================================================================
+
+// HOVER
+.c-checkbox input:not(:disabled, :checked):hover + label::before {
+    background-color: $checkbox-bg-color-hover;
+    border-color: $checkbox-border-color-hover;
+    border-width: 2px;
+}
+
+// DISABLED
+.c-checkbox input:disabled + label {
+    color: $checkbox-label-color-disabled;
+    cursor: not-allowed;
+
+    &::before {
+        background-color: $checkbox-bg-color-disabled;
+        border-color: $checkbox-border-color-disabled;
+    }
+}
+
+// CHECKED
+.c-checkbox input:checked + label::before {
+    background-color: $checkbox-bg-color-checked;
+    border-color: $checkbox-border-color-checked;
+}
+
+// CHECKED + HOVER
+.c-checkbox input:not(:disabled):hover:checked + label::before {
+    background-color: $checkbox-checked-bg-color-hover;
+    border-color: $checkbox-checked-border-color-hover;
+}
+
+// CHECKED + DISABLED
+.c-checkbox input:checked:disabled + label::before {
+    background-color: $checkbox-checked-bg-color-disabled;
+    border-color: $checkbox-checked-border-color-disabled;
+}

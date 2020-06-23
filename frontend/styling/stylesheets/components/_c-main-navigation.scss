@@ -1,0 +1,317 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Main Navigation
+//  *   CH03 - Main Navigation :: Logo
+//  *   CH04 - Main Navigation :: Button Search
+//  *   CH04 - Main Navigation :: Panel
+//  *   CH05 - Main Navigation :: Panel Right :: Dashboard Main Navigation
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$main-navigation-bg: $white;
+$main-navigation-shadow: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 0%, rgba(255, 255, 255, 0) 100%);
+$btn-back-color: $black-100;
+
+
+
+//================================================================================================================
+//  *   CH02 - Main Navigation
+//================================================================================================================
+.main-navigation {
+    @include fixed(top 0 left 0);
+    height: 63px;
+    width: 100%;
+    z-index: 50;
+
+    + .push-main-navigation {
+        padding-top: calc(58px + 15px);
+    }
+
+    &::after {
+        @include absolute(left 0 bottom 0);
+        background: $main-navigation-shadow;
+        content: '';
+        height: 5px;
+        width: 100%;
+    }
+}
+
+.main-navigation .bg {
+    background: $main-navigation-bg;
+    height: 58px;
+
+    .l-section-shrink {
+        height: 100%;
+    }
+}
+
+.main-navigation .panel-left {
+    @include flexgrid(column, center, flex-start, wrap);
+    height: 58px;
+}
+
+.main-navigation .panel-right {
+    @include flexgrid(row, flex-end, center, wrap);
+    height: 58px;
+}
+
+.main-navigation .btn-search,
+.main-navigation .btn-back,
+.main-navigation .btn-close,
+.main-navigation .btn-home,
+.main-navigation .btn-bell,
+.main-navigation .btn-log-out {
+    @include flexgrid(column, center, center, wrap);
+    position: relative;    
+    height: 50px;
+    width: 50px;
+
+    @include breakpoint-max(xs) {
+        height: 40px;
+        width: 40px;
+    }
+
+    &.push-left {
+        left: -8px;
+    }
+
+    &.push-right {
+        right: -8px;
+    }
+
+    .feather {
+        @include breakpoint-max(xs) {
+            height: 20px;
+            width: 20px;
+        }
+    }
+}
+
+.main-navigation .c-link.btn-back {
+    color: $btn-back-color;
+}
+
+
+
+//================================================================================================================
+//  *   CH03 - Main Navigation :: Logo
+//================================================================================================================
+.main-navigation .logo {
+    display: inline-block;
+
+    img {
+        height: 30px;
+        width: auto;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH04 - Main Navigation :: Panel
+//================================================================================================================
+.main-navigation .bg .panel-left,
+.main-navigation .bg .panel-right,
+.main-navigation .bg .panel-search {
+    transition: .3s all ease;
+}
+
+// Transition if search module is Off
+.main-navigation .bg {
+    .panel-left,
+    .panel-right {
+        transform: translateY(0);
+    }
+
+    .panel-search,
+    .panel-page-heading {
+        @include flexgrid(column, center, flex-start, wrap);
+        @include absolute(top 0 left 0);
+        transform: translateY(-200%);
+        width: 100%;
+        height: 58px;
+    }
+
+    .panel-page-heading {
+        transform: translateY(0);
+    }
+}
+
+// Transition if search module is On
+.main-navigation.is-search-on .bg {
+    .panel-left,
+    .panel-right {
+        transform: translateY(-200%);
+    }
+
+    .panel-search {
+        transform: translateY(0%);
+    }
+}
+
+.main-navigation .bg .panel-page-heading {
+    .c-heading-bar {
+        left: -8px;
+        position: relative;
+        width: calc(100% - 42px);
+    }    
+}
+
+
+
+//================================================================================================================
+//  *   CH05 - Main Navigation :: Panel Right :: Dashboard Main Navigation
+//================================================================================================================
+.fn-toggle-m-notification {
+    position: relative;
+}
+
+.fn-toggle-m-notification.is-active {
+    &::before {
+        @include center(both);
+        background-color: $main-100;
+        border-radius: 100%;
+        content: '';
+        height: 40px;
+        width: 40px;
+        z-index: -1;
+    }
+
+    &::after {
+        display: none;
+    }
+
+    .feather {
+        stroke: $white;
+    }
+}
+
+.fn-toggle-m-notification.is-new {
+    &::after {
+        @include absolute(top 10px right 10px);
+        background-color: $negative-default;
+        border-radius: 100%;
+        content: '';
+        height: 8px;
+        width: 8px;
+
+        @include breakpoint-max(xs) {
+            right: 6px;
+            top: 6px;
+        }
+    }
+}
+
+.main-navigation .panel-right ul.navbar {
+    @include flexgrid(row, flex-end, center, wrap);
+    list-style: none;
+}
+
+.notification-dropdown.is-expanded {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+
+    + .sandbox {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.notification-dropdown {
+    @include absolute(top 75px left 15px right 15px);
+    background-color: $white;
+    border-radius: 4px;
+    box-shadow: 0 3px 21px 0 rgba(0,0,0,.2);
+    font-size: 14px;
+    opacity: 0;
+    overflow-y: auto;
+    padding: 15px 12px 25px;
+    transform: translateY(-20%);
+    transition: .3s all ease-in-out;
+    visibility: hidden;
+    width: calc(100vw - 30px);
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    + .sandbox {
+        @include fixed(top 0 right 0 bottom 0 left 0);
+        background-color: rgba(0,0,0,0.4);
+        height: 100%;
+        opacity: 0;
+        transition: .2s all ease-in-out;
+        visibility: hidden;
+        width: 100%;
+        z-index: -1;
+    }
+    
+    p.primary.medium.small-1 {
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        padding-left: 8px;
+        position: relative;
+
+        &::before {
+            @include absolute(bottom 0 left -15px);
+            background-color: $black-900;
+            content: '';
+            height: 1px;
+            width: calc(100% + 30px);
+        }
+    }
+
+    .dropdown-item {
+        @include flexgrid(row, flex-start, center, wrap);
+        border: 1px solid $black-900;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        padding: 10px 8px;
+        text-decoration: none;
+        width: 100%;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .thumbnail {
+            background-color: $main-100;
+            border-radius: 50px;
+            height: 32px;
+            margin-right: 12px;
+            padding: .5rem;
+            position: relative;
+            width: 32px;
+
+            .feather {
+                @include center(both);
+                stroke: $white;
+            }
+        }
+
+        .content {
+            width: calc(100% - 44px);
+
+            h6 {
+                @include truncate-text();
+                width: 100%;
+            }
+
+            p {
+                @include truncate-text();
+                width: 100%;
+                padding-bottom: 5px;
+
+                + p {
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+}

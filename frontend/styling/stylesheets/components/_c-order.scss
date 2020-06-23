@@ -1,0 +1,41 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Order Label Status
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$order-label-status-border-color: $black-700;
+$order-label-status-font-color: $black-100;
+$order-label-status-background-color: $white;
+$order-label-status-border-radius: $button-border-radius * 2;
+
+
+
+//================================================================================================================
+//  *   CH02 - Order Label Status
+//================================================================================================================
+.c-order.order-label-status {
+    @include flexgrid(row, space-between, center, wrap);
+    background-color: $order-label-status-background-color;
+    border-radius: $order-label-status-border-radius;
+    border: 1px solid $order-label-status-border-color;
+    height: 55px;
+    padding: 0 $l-section-gutter;
+
+    @include breakpoint-max(xs) {
+        height: 45px;
+    }
+
+    span {
+        font-weight: 500;
+
+        + span {
+            text-align: right;
+        }
+    }
+}

@@ -1,0 +1,145 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Placeholder Items
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$placeholder-bg: $white !default;
+$placeholder-color: $main-900 !default;
+$placeholderborder-radius: 2px !default;
+
+$placeholder-gutter: $l-section-gutter !default;
+$placeholder-spacer: $l-section-gutter !default;
+
+$placeholder-avatar-border-radius: 50% !default;
+
+$placeholder-animation-duration: .8s !default;
+
+
+
+//================================================================================================================
+//  *   CH02 - Placeholder Items
+//================================================================================================================
+.placeholder-item {
+
+    &,
+    *,
+    ::after,
+    ::before {
+        box-sizing: border-box;
+    }
+
+    direction: ltr;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding: $placeholder-gutter ($placeholder-gutter / 2) ($placeholder-gutter - $placeholder-spacer) ($placeholder-gutter / 2);
+    overflow: hidden;
+    margin-bottom: $placeholder-gutter;
+    background-color: $placeholder-bg;
+    border: 1px solid darken($placeholder-bg, 10%);
+    border-radius: $placeholderborder-radius;
+
+    &::before {
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        z-index: 1;
+        width: 500%;
+        margin-left: -250%;
+        animation: placeholder-animation $placeholder-animation-duration linear infinite;
+        background: linear-gradient(to right, rgba($placeholder-bg, 0) 46%, rgba($placeholder-bg, .35) 50%, rgba($placeholder-bg, 0) 54%) 50% 50%;
+    }
+
+    > * {
+        flex: 1 1 auto;
+        display: flex;
+        flex-flow: column;
+        padding-right: ($placeholder-gutter / 2);
+        padding-left: ($placeholder-gutter / 2);
+    }
+}
+
+.placeholder-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: ($placeholder-spacer / 2);
+
+    div {
+        height: 10px;
+        margin-bottom: ($placeholder-spacer / 2);
+        background-color: $placeholder-color;
+    }
+
+    .big,
+    &.big div {
+        height: 20px;
+        margin-bottom: $placeholder-spacer;
+    }
+
+    .empty {
+        background-color: rgba($placeholder-bg, 0);
+    }
+}
+
+.placeholder-col-2 {
+    flex: 0 0 percentage(2 / 12);
+}
+
+.placeholder-col-4 {
+    flex: 0 0 percentage(4 / 12);
+}
+
+.placeholder-col-6 {
+    flex: 0 0 percentage(6 / 12);
+}
+
+.placeholder-col-8 {
+    flex: 0 0 percentage(8 / 12);
+}
+
+.placeholder-col-10 {
+    flex: 0 0 percentage(10 / 12);
+}
+
+.placeholder-col-12 {
+    flex: 0 0 percentage(12 / 12);
+}
+
+.placeholder-avatar {
+    position: relative;
+    width: 100%;
+    min-width: 60px;
+    background-color: $placeholder-color;
+    margin-bottom: $placeholder-spacer;
+    border-radius: $placeholder-avatar-border-radius;
+    overflow: hidden;
+
+    &::before {
+        content: " ";
+        display: block;
+        padding-top: 100%;
+    }
+}
+
+.placeholder-picture {
+    width: 100%;
+    height: 120px;
+    background-color: $placeholder-color;
+    margin-bottom: $placeholder-spacer;
+}
+
+.placeholder-banner {
+    @include absolute(top 0 left 0);
+    background-color: $placeholder-color;
+    height: 100%;
+    width: 100%;
+}

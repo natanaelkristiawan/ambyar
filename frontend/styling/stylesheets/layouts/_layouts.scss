@@ -1,0 +1,296 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Layout Container
+//  *   CH02 - Flexbox Grid Column
+//  *   CH03 - Page Content
+
+
+
+//================================================================================================================
+//  *   CH01 - Layout Container
+//  *   Variables stored on variables/layouts.scss
+//================================================================================================================
+
+.l-section,
+.l-section-fluid {
+    @include clearfix();
+    @include relative();
+    margin: 0 auto;
+    padding: 0 $l-section-gutter;
+    width: 100%;
+
+    .c-card {
+        padding-left: $l-section-gutter;
+        padding-right: $l-section-gutter;
+    }
+}
+
+.l-section {
+    @include breakpoint(sm) {
+		max-width: $l-section-width-sm;
+    }
+
+    @include breakpoint(md) {
+        max-width: $l-section-width-md;
+    }
+
+    @include breakpoint(lg) {
+        max-width: $l-section-width-lg;
+    }
+
+    @include breakpoint(wd) {
+        max-width: $l-section-width-wd;
+    }
+
+    @include breakpoint(xwd) {
+        max-width: $l-section-width-xwd;
+    }
+
+    @include breakpoint(xwd) {
+        max-width: $l-section-width-xxwd;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH02 - Flexbox Grid Column
+//================================================================================================================
+.l-section-shrink {
+    @include flex(0, 1, auto);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);      
+    @include flexbox();
+    box-sizing: border-box;
+    margin-left: -$l-section-gutter;
+    margin-right: -$l-section-gutter;
+
+    &.reverse {
+        @include flex-direction(row-reverse);
+    }
+}
+
+.col.reverse {
+    @include flex-direction(column-reverse);
+}
+
+@mixin flexboxgrid-sass-col-common {
+    @include flex-grow(0);
+    @include flex-shrink(0);  
+    box-sizing: border-box;  
+    padding-left: $gutter-width;
+    padding-right: $gutter-width;
+}
+  
+$name: xs;
+.col-#{$name} {
+    @include flexboxgrid-sass-col-common;
+    @include flex-basis(auto);
+}
+
+@for $i from 1 through $flexboxgrid-grid-columns {
+    .col-#{$name}-#{$i} {
+        @include flexboxgrid-sass-col-common;
+        @include flex-basis(100% / $flexboxgrid-grid-columns * $i);
+        max-width: 100% / $flexboxgrid-grid-columns * $i;
+    }
+}
+
+@for $i from 0 through $flexboxgrid-grid-columns {
+    .col-#{$name}-offset-#{$i} {
+        @include flexboxgrid-sass-col-common;
+        @if $i == 0 {
+            margin-left: 0;
+        } @else {
+            margin-left: 100% / $flexboxgrid-grid-columns * $i;
+        }
+    }
+}
+
+.col-#{$name} {
+    @include flex-grow(1);
+    @include flex-basis(0);
+    max-width: 100%;
+}
+
+.start-#{$name} {
+    @include justify-content(flex-start);
+    text-align: left;
+}
+
+.center-#{$name} {
+    @include justify-content(center);
+    text-align: center;
+}
+
+.end-#{$name} {
+    @include justify-content(flex-end);
+    text-align: right;
+}
+
+.top-#{$name} {
+    @include align-items(flex-start);
+}
+
+.middle-#{$name} {
+    @include align-items(center);
+}
+
+.bottom-#{$name} {
+    @include align-items(flex-end);
+}
+
+.around-#{$name} {
+    @include justify-content(space-around);
+}
+
+.between-#{$name} {
+    @include justify-content(space-between);
+}
+
+.first-#{$name} {
+    order: -1;
+}
+
+.last-#{$name} {
+    order: 1;
+}
+
+@each $breakpoint in $flexboxgrid-breakpoints {
+    $name: nth($breakpoint, 1);
+    $size: nth($breakpoint, 2);
+
+    @media only screen and (min-width: $size) {
+
+        .col-#{$name} {
+            @include flexboxgrid-sass-col-common;
+            @include flex-basis(auto);
+        }
+
+        @for $i from 1 through $flexboxgrid-grid-columns {
+            .col-#{$name}-#{$i} {
+                @include flexboxgrid-sass-col-common;
+                @include flex-basis(100% / $flexboxgrid-grid-columns * $i);
+                max-width: 100% / $flexboxgrid-grid-columns * $i;
+            }
+        }
+
+        @for $i from 0 through $flexboxgrid-grid-columns {
+            .col-#{$name}-offset-#{$i} {
+                @include flexboxgrid-sass-col-common;
+                @if $i == 0 {
+                    margin-left: 0;
+                } @else {
+                margin-left: 100% / $flexboxgrid-grid-columns * $i;
+            }
+        }
+        }
+
+        .col-#{$name} {
+            @include flex-grow(1);
+            @include flex-basis(0);
+            max-width: 100%;
+        }
+
+        .start-#{$name} {
+            @include justify-content(flex-start);
+            text-align: left;
+        }
+
+        .center-#{$name} {
+            @include justify-content(center);
+            text-align: center;
+        }
+
+        .end-#{$name} {
+            @include justify-content(flex-end);
+            text-align: right;
+        }
+
+        .top-#{$name} {
+            @include align-items(flex-start);
+        }
+
+        .middle-#{$name} {
+            @include align-items(center);
+        }
+
+        .bottom-#{$name} {
+            @include align-items(flex-end);
+        }
+
+        .around-#{$name} {
+            @include justify-content(space-around);
+        }
+
+        .between-#{$name} {
+            @include justify-content(space-between);
+        }
+
+        .first-#{$name} {
+            order: -1;
+        }
+
+        .last-#{$name} {
+            order: 1;
+        }
+    }
+}
+
+.box-row {
+    background: rgba(41, 75, 105, 0.1);
+    border-radius: 2px;
+    border-radius: 2px;
+    border: 1px solid #6f9dc7;
+    box-sizing: border-box;
+    color: #294b69;
+    margin-bottom: 0;
+    margin-bottom: 1em;
+    min-height: 2.25rem;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+
+.u-text-align-left {
+    text-align: left;
+}
+
+.u-text-align-right {
+    text-align: right;
+}
+
+.u-text-align-center {
+    text-align: center;
+}
+
+.u-display-block {
+    display: block;
+}
+
+.u-display-inline-block {
+    display: inline-block;
+}
+
+.u-display-inline {
+    display: inline;
+}
+
+.u-display-flex {
+    display: flex;
+}
+
+
+//================================================================================================================
+//  *   CH03 - Page Content
+//================================================================================================================
+.l-site {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+
+    .l-site-content {
+        flex: 1;
+    }
+}

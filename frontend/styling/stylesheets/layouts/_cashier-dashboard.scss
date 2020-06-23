@@ -1,0 +1,70 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Component Order Progress Card Thumbnail
+//  *   CH03 - Search Result Component Order Progress Card Thumbnail
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$order-progress-icon-color: $black-300;
+
+
+//================================================================================================================
+//  *   CH02 - Component Order Progress Card Thumbnail
+//================================================================================================================
+.cashier-dashboard-order-progress .panel-link {
+    display: block;
+    margin-top: 15px;
+    text-decoration: none;
+
+    &:first-of-type {
+        margin-top: 0;
+    }
+
+    .feather {
+        stroke: $order-progress-icon-color;
+    }
+}
+
+.cashier-dashboard-order-progress .c-card-body {
+    &:not(.hr) {
+        padding-top: 15px !important;
+        position: relative;    
+
+        &::before {
+            @include center(horizontal);
+            border-top: 1px dashed $black-900;
+            content: '';
+            height: 1px;
+            top: 0;
+            width: 100%;
+        }
+    }
+
+    .l-section-shrink {
+        align-items: stretch;
+
+        .right {            
+            position: relative;
+
+            .feather {
+                @include center(vertical);
+                right: $l-section-gutter;
+            }
+        }
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH03 - Search Result Component Order Progress Card Thumbnail
+//================================================================================================================
+.order-progress-search-result {
+    padding: 0 $l-section-gutter;
+    width: 100%;
+}

@@ -1,0 +1,37 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Store variables for section layout
+
+
+
+//================================================================================================================
+//  *   CH01 - Store layout width variables
+//================================================================================================================
+
+//  Layout section width on small screen
+$l-section-width-sm: 540px;
+
+//  Layout section width on medium screen
+$l-section-width-md: 720px;
+
+//  Layout section width on large screen
+$l-section-width-lg: 960px;
+
+//  Layout section width on wide screen
+$l-section-width-wd: 1170px;
+
+//  Layout section width on wide screen
+$l-section-width-xwd: 1300px;
+
+//  Layout section width on wide screen
+$l-section-width-xxwd: 1600px;
+
+//  Layout gutter section
+$l-section-gutter: 0.9375rem;
+
+//  Flexbox grid column
+$flexboxgrid-grid-columns: 12 !default;
+$flexboxgrid-breakpoints: xxs $xxs, xs $xs, sm $sm, md $md, lg $lg, wd $wd, xwd $xwd, xxwd $xxwd;
+$gutter-width: $l-section-gutter;
+$half-gutter-width: $l-section-gutter * .5;

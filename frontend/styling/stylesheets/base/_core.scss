@@ -1,0 +1,155 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variables
+//  *   CH02 - Resets margins and paddings for headers, figure, ul, ol, p, and blackquote
+//  *   CH03 - Super hard reset that removes all borders and radius of all form items
+//  *   CH04 - Use border-box for everything
+//  *   CH05 - Set image and objects to have a max-width of 100%
+//  *   CH06 - Set html and body to have default styling
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variables
+//================================================================================================================
+// Font size
+$base-font-size: 1em;
+
+// Line height
+$base-line-height: 1.5;
+$header-line-height: 1.25;
+
+
+
+//================================================================================================================
+//  *   CH01 - Resets margins and paddings for headers, figure, ul, ol, p, and blackquote
+//================================================================================================================
+blockquote,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+p,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+@include headings() {
+    line-height: $header-line-height;
+}
+
+
+
+//================================================================================================================
+//  *   CH02 - Super hard reset that removes all borders and radius of all form items
+//================================================================================================================
+button,
+input,
+textarea {
+    border: none;
+    border-radius: 0;
+    outline: none;
+    appearance: none;
+
+    &:active,
+    &:focus,
+    &:hover {
+        outline: none;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH03 - Use border-box for everything
+//================================================================================================================
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: inherit;
+}
+
+
+
+//================================================================================================================
+//  *   CH04 - Set image and objects to have a max-width of 100%
+//================================================================================================================
+embed,
+iframe,
+img,
+object,
+video {
+    max-width: 100%;
+}
+
+img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+
+    &.lazy {
+        width: 100%;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH05 - Set html and body to have default styling
+//================================================================================================================
+body,
+html {
+    height: 100%;
+    line-height: 1;
+    width: 100%;
+}
+
+html {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    background-color: $body-bg;
+    font-family: 'Roboto', sans-serif;
+    font-size: $base-font-size;
+    font-weight: normal;
+    line-height: $base-line-height;
+    text-rendering: optimizeLegibility;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid $black-900;
+    height: 1px;
+    margin: 0 auto;
+    width: calc(100% - 30px );
+
+    &.dashed {
+        border-top: 1px dashed $black-900;
+    }
+}
+
+.devider {
+    position: relative;
+    width: 100%;
+
+    span {
+        @include center(both);
+        background-color: $white;
+        display: block;
+        padding: 5px 10px;
+        text-align: center;
+    }
+}

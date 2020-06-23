@@ -1,0 +1,204 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Setup Components Heading
+//  *   CH03 - Setup Components Delivery Detail
+//  *   CH04 - Setup Components Payment Detail List
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$figure-delivery-detail-bounds-background-color: #ececec;
+$figure-delivery-detail-bounds-border-color: $white;
+$figure-delivery-detail-bounds-shadow: rgba(0, 0, 0, .1);
+$figure-delivery-detail-step-background-color: $black-700;
+
+//  *   Figure SVG Draw Phone Success
+$svg-draw-phone-check: $main-100;
+$svg-draw-phone-screen: $main-100;
+
+//  *   Figure SVG Thumbnail Store Location
+$svg-store-location-v-nail: $main-100;
+$svg-store-location-v-bounds: $main-100;
+$svg-store-location-v-bounds-shadow: $main-100-dark;
+
+//  *   Figure SVG Thumbnail Delivery Location
+$svg-delivery-location-v-location: $main-100;
+$svg-delivery-location-v-location-shadow: $black-900;
+
+//  *   Payment Detail List
+$payment-detail-list-group-item-border-color: $black-900;
+
+
+
+
+//================================================================================================================
+//  *   CH02 - Setup Components Heading
+//================================================================================================================
+.c-end-screen-heading {
+    .figure-draw-phone-success {
+        height: auto;
+        margin: 0 auto;
+        width: 60%;
+
+        .v-check {
+            fill: $svg-draw-phone-check;
+        }
+
+        .v-phone-screen {
+            fill: $svg-draw-phone-screen;
+        }
+    }
+}
+
+
+//================================================================================================================
+//  *   CH03 - Setup Components Delivery Detail
+//================================================================================================================
+.c-end-screen-payment-detail .panel-delivery-detail {
+    @include flexgrid(row, flex-start, center, wrap);
+    padding-top: 30px;
+    position: relative;
+    width: 100%;
+
+    &:first-of-type {
+        padding-top: 0;
+    }
+}
+
+.c-end-screen-payment-detail .panel-delivery-detail .figure {
+    margin-right: 20px;
+
+    .bounds {
+        @include flexgrid(column, center, center, wrap);
+        background-color: $figure-delivery-detail-bounds-background-color;
+        border-radius: 100%;
+        border: 4px solid $figure-delivery-detail-bounds-border-color;
+        box-shadow: 0px 2px 4px $figure-delivery-detail-bounds-shadow;
+        height: 72px;        
+        width: 72px;
+
+        @include breakpoint-max(xs) {
+            border-width: 2px;
+            height: 60px;
+            width: 60px;
+        }
+
+        .svg.store-location {
+            max-width: 60%;
+
+            .v-nail {
+                fill: $svg-store-location-v-nail;
+            }
+
+            .v-bounds {
+                fill: $svg-store-location-v-bounds;
+            }
+
+            .v-bounds-shadow {
+                fill: $svg-store-location-v-bounds-shadow;
+            }
+        }
+
+        .svg.delivery-location {
+            max-width: 40%;
+
+            .v-location {
+                fill: $svg-delivery-location-v-location;
+            }
+
+            .v-location-shadow {
+                fill: $svg-delivery-location-v-location-shadow;
+            }
+        }
+    }
+}
+
+.c-end-screen-payment-detail .panel-delivery-detail .label {
+    width: calc(100% - 100px);
+
+    @include breakpoint-max(xs) {
+        width: calc(100% - 84px);
+    }
+
+    span {
+        display: block;
+    }
+}
+
+.c-end-screen-payment-detail .panel-delivery-detail .figure-step {
+    @include absolute(top 6px left 0);
+    width: 72px;
+    z-index: -1;
+
+    @include breakpoint-max(xs) {
+        width: 60px;
+    }
+
+    span {
+        background-color: $figure-delivery-detail-step-background-color;
+        border-radius: 100%;
+        display: block;
+        height: 4px;
+        margin: 0 auto;
+        width: 4px;
+        margin-top: 4px;
+
+        &:first-of-type {
+            margin-top: 0;
+        }
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH04 - Setup Components Payment Detail List
+//================================================================================================================
+.c-payment-detail-list {
+    width: 100%;
+}
+
+.c-payment-detail-list.group {
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        .item {
+            @include flexgrid(row, flex-start, flex-start, wrap);
+            border-bottom: 1px dashed $payment-detail-list-group-item-border-color;
+            padding: 10px 0;
+            width: 100%;
+
+            &:first-child {
+                padding-top: 0;
+            }
+
+            span {
+                width: 70%;
+
+                + span {
+                    width: 30%;
+                }
+
+                &.fluid {
+                    width: 100%;
+                }
+
+                &.o-note {
+                    display: block;
+                    padding-top: 10px;
+                    width: 100%;
+                
+                    @include breakpoint-max(xs) {
+                        padding-top: 8px;
+                    }
+                }
+            }
+        }
+    }
+}

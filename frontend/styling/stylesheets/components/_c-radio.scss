@@ -1,0 +1,136 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Main Components
+//  *   CH03 - Radio State
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$radio-height: 24px;
+$radio-width: 24px;
+
+// Default
+$radio-bg-color-default: transparent;
+$radio-border-color-default: $status--disabled;
+$radio-label-color-default: #333333;
+
+// Hover
+$radio-bg-color-hover: transparent;
+$radio-border-color-hover: $status--primary;
+
+// Disabled
+$radio-bg-color-disabled: transparent;
+$radio-border-color-disabled: $status--disabled;
+$radio-label-color-disabled: $status--disabled;
+
+// Checked
+$radio-checkmark-color: $white;
+$radio-border-color-checked: $status--success;
+$radio-bg-color-checked: $status--success;
+
+// Checked + Hover
+$radio-checked-bg-color-hover: $status--primary;
+$radio-checked-border-color-hover: $status--primary;
+
+// Checked + Disabled
+$radio-checked-bg-color-disabled: $status--disabled;
+$radio-checked-border-color-disabled: $status--disabled;
+
+
+
+//================================================================================================================
+//  *   CH02 - Main Components
+//================================================================================================================
+.c-radio {
+    @include relative();
+}
+
+.c-radio input + label {
+    @include relative();
+    color: $radio-label-color-default;
+    cursor: pointer;
+    display: block;
+    padding-left: calc(24px + 10px); // width of radio + gutter
+    
+    &::before,
+    &::after {
+        border-radius: 100%;
+        content: '';
+    }
+
+    // BOX
+    &::before {
+        @include absolute(top 0 left 0);
+        background: $radio-bg-color-default;
+        border: 1px solid $radio-border-color-default;
+        height: $radio-height;
+        transition: .3s all linear;
+        width: $radio-width;
+    }
+
+    // Checkmark
+    &::after {
+        @include absolute(top 4px left 4px);
+        background-color: $radio-checkmark-color;
+        height: 16px;
+        transform: scale(0);
+        transition: .1s all linear;
+        width: 16px;
+    }
+}
+
+// Checkmark
+// * Could be replaced with an image 
+.c-radio input:checked + label {
+    &::after {
+        transform: scale(1);
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH03 - Radio State
+//================================================================================================================
+
+// HOVER
+.c-radio input:not(:disabled, :checked):hover + label::before {
+    background-color: $radio-bg-color-hover;
+    border-color: $radio-border-color-hover;
+    border-width: 2px;
+}
+
+// DISABLED
+.c-radio input:disabled + label {
+    border-width: 1px;
+    color: $radio-label-color-disabled;
+    cursor: not-allowed;
+
+    &::before {
+        background-color: $radio-bg-color-disabled;
+        border-color: $radio-border-color-disabled;
+    }
+}
+
+
+// CHECKED
+.c-radio input:checked + label::before {
+    background-color: $radio-bg-color-checked;
+    border-color: $radio-border-color-checked;
+}
+
+// CHECKED + HOVER
+.c-radio input:not(:disabled):hover:checked + label::before {
+    background-color: $radio-checked-bg-color-hover;
+    border-color: $radio-checked-border-color-hover;
+}
+
+// CHECKED + DISABLED
+.c-radio input:checked:disabled + label::before {
+    background-color: $radio-checked-bg-color-disabled;
+    border-color: $radio-checked-border-color-disabled;
+}

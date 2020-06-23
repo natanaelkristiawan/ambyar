@@ -1,0 +1,771 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Modal Layout
+//  *   CH03 - Modal Search Layout
+//  *   CH04 - Modal Product Note Layout
+//  *   CH05 - Modal Checkout Delivery Location Layout
+//  *   CH06 - Modal Checkout Promo List Layout
+//  *   CH07 - Modal Checkout Payment Method Layout
+//  *   CH08 - Modal Store Location (Landing)
+//  *   CH09 - Modal GPS Warning (Landing)
+//  *   CH10 - Modal Product Detail
+//  *   CH11 - Modal Share Social Media (Landing)
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$modal-btn-close-color: #FFFFFF;
+$modal-max-width: 750px;
+
+//  *   Modal Checkout Delivery Location
+$modal-checkout-delivery-location-background-color: $white;
+$modal-checkout-delivery-location-shadow-color: rgba(28, 28, 28, 0.05);
+$modal-checkout-delivery-location-placholder-background-color: $main-900;
+
+//  *   Modal Checkout Promo List
+$modal-checkout-promo-list-background-color: $white;
+
+//  *   Modal Checkout Payment Method
+$modal-checkout-payment-method-background-color: $white;
+$modal-checkout-payment-method-border-color: $black-900;
+
+//  *   Modal Store Location
+$modal-store-location-background-color: $white;
+$modal-store-location-panel-heading-background-color: $white;
+
+//  *   Modal GPS Warning
+$modal-gps-warning-background-color: $white;
+
+//  *   Modal Product Detail
+$modal-product-detail-overlay-background-color: $white;
+$modal-product-detail-btn-action-wrapper-background-color: $modal-product-detail-overlay-background-color;
+$modal-product-detail-top-nav-background-color: $modal-product-detail-overlay-background-color;
+
+//  *   Modal Share Social Media
+$modal-share-social-media-background-color: $white;
+
+
+
+
+//================================================================================================================
+//  *   CH02 - Modal Component
+//================================================================================================================
+.modal-close-button {
+    @include absolute(top -40px right 0px);
+    cursor: pointer;
+    display: block;
+    height: 40px;
+    opacity: 0;
+    overflow: hidden;
+    transition: .15s all ease;
+    visibility: visible;
+    width: 40px;
+    z-index: 5;
+
+    &::after,
+    &::before {
+        background-color: $modal-btn-close-color;
+        content: '';
+        display: block;
+        height: 2px;
+        left: 50%;
+        margin: -1px 0 0 -8px;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 16px;
+    }
+
+    &::after {
+        transform: rotate(-45deg);
+    }
+
+    &::before {
+        transform: rotate(45deg);
+    }
+}
+
+.modal-overlay {
+    @include fixed(top 0 right 0 bottom 0 left 0);
+    background-color: rgba(0, 0, 0, .8);
+    margin: auto;
+    overflow-y: auto;
+    pointer-events: none;
+    transition: .5s all ease;
+
+    &.white {
+        background-color: $white;
+    }
+
+    &.is-active {
+        -webkit-overflow-scrolling: touch;
+        opacity: 1;
+        pointer-events: auto;
+        visibility: visible;
+
+        .modal-close-button {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            opacity: 1;
+            transform: scale(1);
+            visibility: visible;
+        }
+    }
+}
+
+.modal-container {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .5s all ease-in-out;
+}
+
+.modal-safebox {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.modal-bounds {
+    @include relative();
+    display: table-cell;
+    padding: 2rem;
+    vertical-align: middle;
+
+    @include breakpoint(lg) {
+        padding-bottom: 5rem;
+        padding-top: 5rem;
+    }
+
+    @include breakpoint-max(xs) {
+        padding: 2rem 1rem;
+    }
+
+    &.top {
+        vertical-align: top;
+    }
+
+    &.bottom {
+        vertical-align: bottom;
+    }
+
+    .sandbox {
+        @include absolute(top 0 left 0);
+        height: 100%;        
+        width: 100%;
+        z-index: 1;
+    }
+}
+
+.modal {
+    @include relative();
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $modal-max-width;
+    opacity: 0;
+    position: relative;
+    transform: scale(.5);
+    transition-duration: .3s;
+    transition-timing-function: cubic-bezier(.165, .84, .44, 1);
+    visibility: hidden;
+    z-index: 2;
+}
+
+.modal-content {
+    .modal-content-container {
+        background-color: #ffffff;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH03 - Modal Search Layout
+//================================================================================================================
+.modal-overlay.l-modal-search {
+    z-index: 45;
+
+    .modal-bounds {
+        padding-top: 58px; // normalize main navigation
+        padding-left: 0;
+        padding-right: 0;
+
+        .modal {
+            padding-top: 15px;
+        }
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH04 - Modal Product Note Layout
+//================================================================================================================
+.modal-overlay.l-modal-product-note {
+    .modal-bounds {
+        padding: 20px 0;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH05 - Modal Checkout Delivery Location Layout
+//================================================================================================================
+.modal-overlay.l-modal-checkout-delivery-location {
+    .modal-bounds {        
+        padding: 20px 0 0;
+
+        > a.o-button.btn-rounded {
+            margin-bottom: 15px;
+            margin-right: 10px;
+        }
+
+        .modal {
+            background-color: $modal-checkout-delivery-location-background-color;
+            max-height: 88vh;
+            transform: translateY(100%);
+            transition: .5s all ease;
+            overflow: hidden;
+        }
+    }
+}
+
+.modal-overlay.l-modal-checkout-delivery-location.is-active {
+    .modal-bounds .modal {        
+        transform: translateY(0);        
+    }
+}
+
+
+//  *   Panel Heading
+.modal-overlay.l-modal-checkout-delivery-location .panel-heading {
+    .safebox {
+        @include flexgrid(row, flex-start, center, wrap);
+        width: 100%;
+
+        .c-link {
+            appearance: none;
+            display: block;
+            height: 50px;
+            position: relative;
+            transform: translateX(-65px);
+            transition: .5s all ease;
+            visibility: hidden;
+            width: 50px;
+
+            svg.feather {
+                @include center(both);
+            }
+        }
+
+        h6 {
+            transform: translateX(-50px);
+            transition: .5s all ease;            
+        }
+    }
+}
+
+.modal-overlay.l-modal-checkout-delivery-location.is-active.is-select-on-map .panel-heading {
+    .c-link {
+        appearance: button;
+        transform: translateX(-8px);
+        visibility: visible;
+    }
+
+    h6 {
+        transform: translateX(-8px);
+    }
+}
+//  *   End Panel Heading
+
+
+//  *   Panel Map
+.modal-overlay.l-modal-checkout-delivery-location .panel-map {
+    max-height: 0;
+    overflow: hidden;
+    transition: .5s all ease;
+
+    .map-container {
+        height: calc(88vh - 55px);
+        position: relative;
+        width: 100%;
+    }
+}
+
+.modal-overlay.l-modal-checkout-delivery-location.is-active.is-select-on-map .panel-map {
+    height: 100%;
+    max-height: 100vh;
+    overflow: visible;
+    transition: 1s all ease;
+}
+//  *   End Panel Map
+
+
+//  *   Panel Map :: Location Detail
+.modal-overlay.l-modal-checkout-delivery-location .panel-map .location-detail {
+    @include absolute(bottom 0 left 0);
+    background-color: $modal-checkout-delivery-location-background-color;
+    box-shadow: 0px -2px 4px $modal-checkout-delivery-location-shadow-color;
+    max-height: 400px;
+    overflow: hidden;
+    transform: translateY(100%);
+    transition: .3s all ease;
+    width: 100%;
+    z-index: 20;
+
+    .panel {
+        @include flexgrid(row, flex-start, center, wrap);
+        padding: 15px;
+        position: relative;
+        transition: .3s all ease;
+        width: 100%;        
+
+        &.placeholder {
+            @include absolute(top -80px left 0);
+        }
+
+        .icon {
+            @include flexgrid(column, center, center, wrap);
+            @include relative(left -8px);
+            height: 50px;
+            width: 50px;
+
+            .feather {
+                stroke: $main-100;
+            }
+        }
+
+        .address {
+            width: calc(100% - 50px);
+        }
+
+        .btn-action-wrapper {
+            width: 100%;
+
+            .o-button {
+                display: block;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.modal-overlay.l-modal-checkout-delivery-location .panel-map .location-detail .panel.placeholder {
+    .placeholder-loading {
+        background-color:$modal-checkout-delivery-location-placholder-background-color;
+    }
+    
+    .icon {
+        .placeholder-loading {
+            @include center(both);
+            border-radius: 100%;
+            height: 24px;
+            width: 24px
+        }
+    }
+
+    .address {
+        .placeholder-loading {
+            border-radius: 40px;
+            height: 12px;
+            margin-top: 10px;
+            width: 80%;
+
+            &:first-of-type {
+                margin-top: 0;
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+.modal-overlay.l-modal-checkout-delivery-location.is-select-on-map .panel-map .location-detail {
+    transform: translateY(0);
+}
+
+.modal-overlay.l-modal-checkout-delivery-location .panel-map .location-detail.is-loading {
+    max-height: 80px;
+
+    .panel {
+        transform: translateY(100%);
+
+        &.placeholder {
+            display: flex;
+            opacity: 1;
+            top: 0;
+            transform: translateY(0);
+        }
+    }
+}
+//  *   End Panel Map :: Location Detail
+
+
+//  *   Panel Option
+.modal-overlay.l-modal-checkout-delivery-location .panel-option {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.modal-overlay.l-modal-checkout-delivery-location.is-active .panel-option {
+    opacity: 1;
+    transform: translateY(0);
+    transition: .8s all ease;
+}
+
+.modal-overlay.l-modal-checkout-delivery-location.is-active.is-select-on-map .panel-option {
+    opacity: 0;
+    transform: translateY(100%);
+}
+//  *   End Panel Option
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+.modal-overlay.l-modal-checkout-promo-list {
+    .modal-bounds {        
+        padding: 20px 0 0;
+
+        > a.o-button.btn-rounded {
+            margin-bottom: 15px;
+            margin-right: 10px;
+        }
+
+        .modal {
+            background-color: $modal-checkout-delivery-location-background-color;
+            max-height: 80vh;
+            transform: translateY(100%);
+            transition: .5s all ease;
+            overflow: hidden;
+        }
+    }
+}
+
+.modal-overlay.l-modal-checkout-promo-list.is-active {
+    .modal-bounds .modal {        
+        transform: translateY(0);        
+    }
+}
+
+.modal-overlay.l-modal-checkout-promo-list .panel-heading {
+    .safebox {
+        @include flexgrid(row, flex-start, center, wrap);
+        height: 50px;
+        width: 100%;
+    }
+}
+
+.modal-overlay.l-modal-checkout-promo-list .panel-promo-list {
+    @include flexgrid(column, flex-start, flex-start, wrap);
+    height: calc(80vh - 50px);
+    overflow: scroll;
+    padding-bottom: 30px;
+    padding-top: 5px;
+}
+
+
+//================================================================================================================
+//  *   CH07 - Modal Checkout Payment Method Layout
+//================================================================================================================
+.modal-overlay.l-modal-checkout-payment-method {
+    .modal-bounds {        
+        padding: 20px 0 0;
+
+        > a.o-button.btn-rounded {
+            margin-bottom: 15px;
+            margin-right: 10px;
+        }
+
+        .modal {
+            background-color: $modal-checkout-delivery-location-background-color;
+            max-height: 80vh;
+            transform: translateY(100%);
+            transition: .5s all ease;
+            overflow: hidden;
+        }
+    }
+}
+
+.modal-overlay.l-modal-checkout-payment-method.is-active {
+    .modal-bounds .modal {        
+        transform: translateY(0);        
+    }
+}
+
+.modal-overlay.l-modal-checkout-payment-method .panel-heading {
+    .safebox {
+        @include flexgrid(row, flex-start, center, wrap);
+        height: 50px;
+        width: 100%;
+    }
+}
+
+.modal-overlay.l-modal-checkout-payment-method .panel-payment-method,
+.modal-overlay.l-modal-checkout-payment-method .panel-shipping-method {
+    flex-direction: column;
+    flex-flow: column;
+    height: calc(80vh - 50px);
+    overflow: scroll;
+    padding-bottom: 10px;
+    padding-top: 5px;
+
+    .panel-payment-method-group,
+    .panel-shipping-method-group {
+        padding-bottom: 20px;
+        padding-top: 15px;
+        position: relative;
+        width: 100%;
+        flex-basis: auto;
+
+        &:first-of-type {
+            padding-top: 0;
+
+            &::after {
+                display: none;
+            }
+        }
+
+        &::after {
+            @include center(horizontal);
+            border-bottom: 1px dashed $modal-checkout-payment-method-border-color;
+            top: 0;
+            content: '';
+            height: 1px;
+            width: calc(100% - 30px);
+        }
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH08 - Modal Store Location (Landing)
+//================================================================================================================
+.modal-overlay.l-modal-store-location .modal-bounds {
+    background-color: $modal-store-location-background-color;
+    padding: 0;
+}
+
+.modal-overlay.l-modal-store-location .modal-bounds .panel-map {
+    padding: 0;
+}
+
+.modal-overlay.l-modal-store-location .modal-bounds .panel-map .panel-heading {
+    background-color: $modal-store-location-panel-heading-background-color;
+
+    .safebox {
+        @include flexgrid(row, flex-start, center, wrap);
+        height: 58px;
+        width: 100%;
+
+        .c-link {
+            @include flexgrid(column, center, center, wrap);
+            height: 50px;
+            left: -8px;
+            position: relative;
+            width: 50px;
+        }
+
+        h6 {
+            left: -8px;
+            position: relative;
+        }
+    }
+}
+
+.modal-overlay.l-modal-store-location .modal-bounds .panel-map #store-map {
+    @include absolute(bottom 0 left 0);
+    height: calc(100% - 58px);
+    overflow: hidden;
+    width: 100%;
+}
+
+
+
+//================================================================================================================
+//  *   CH09 - Modal GPS Warning (Landing)
+//================================================================================================================
+.l-modal-gps-warning .modal {
+    transform: translateY(100%);
+    transition: .3s all linear;
+}
+
+.l-modal-gps-warning.is-active .modal {
+    transform: translateY(0);
+}
+
+.l-modal-gps-warning .modal-bounds {
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    vertical-align: bottom;
+
+    .safebox {
+        width: 100%;
+    }
+
+    .modal-content {
+        background-color: $modal-gps-warning-background-color;
+        padding: 30px 0px 20px;
+    }
+
+    .modal-content-container {
+        padding-left: $l-section-gutter;
+        padding-right: $l-section-gutter;
+
+        img.figure {
+            margin: 0px auto;
+        }
+    }
+
+    .btn-action-wrapper {
+        .o-button {
+            display: block;
+            text-align: center;
+            width: 100%;
+        }
+    }
+}
+
+
+//================================================================================================================
+//  *   CH10 - Modal Product Detail
+//================================================================================================================
+.l-modal-product-detail {
+    background-color: $modal-product-detail-overlay-background-color;
+
+    .modal-bounds {
+        padding-bottom: 119px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 80px;
+        vertical-align: top;
+
+        @include breakpoint-max(xs) {
+            padding-bottom: 114px;
+        }
+    }
+
+    .modal {
+        height: 100%;
+        z-index: 1;
+
+        @include breakpoint(md) {
+            max-width: 360px;
+        }
+
+        .safebox {
+            width: 100%;
+        }
+    }
+}
+
+.l-modal-product-detail .panel-image {
+    img {
+        border-radius: 4px;
+        display: block;
+        height: auto;
+        width: 100%;
+    }
+}
+
+.l-modal-product-detail .top-nav,
+.l-modal-product-detail .btn-action-wrapper {
+    z-index: 2;
+
+    .l-section {
+        max-width: 750px;
+        margin: 0 auto;
+
+        @include breakpoint(md) {
+            max-width: 360px;
+        }
+    }
+}
+
+.l-modal-product-detail .top-nav {
+    @include fixed(top 0 left 0);
+    background: $modal-product-detail-top-nav-background-color;
+    padding: 15px;
+    width: 100%;
+
+    .o-button.btn-rounded {
+        margin-left: auto;
+    }
+}
+
+.l-modal-product-detail .btn-action-wrapper {
+    @include fixed(bottom 0 left 0);
+    background-color: $modal-product-detail-btn-action-wrapper-background-color;
+    padding: 10px 15px 15px;
+    width: 100%;
+
+    .o-button {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+
+
+//================================================================================================================
+//  *   CH11 - Modal Share Social Media (Landing)
+//================================================================================================================
+.l-modal-share-social-media {
+    height: 100%;
+    width: 100%;
+}
+
+.l-modal-share-social-media .modal {
+    transform: translateY(100%);
+    transition: .3s all linear;
+}
+
+.l-modal-share-social-media.is-active .modal {
+    transform: translateY(0);
+}
+
+.l-modal-share-social-media .modal-bounds {
+    .safebox {
+        width: 100%;
+    }
+
+    .modal-content {
+        background-color: $modal-share-social-media-background-color;
+        padding: 30px 0px 20px;
+    }
+
+    .modal-content-container {
+        padding: 0 $l-section-gutter;
+    }
+
+    .share-social-media-title {
+        padding-bottom: 20px;
+    }
+
+    .share-social-media-group {
+        .o-button {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+
+            &:first-of-type {
+                margin-top: 0;
+            }
+        }
+    }
+}

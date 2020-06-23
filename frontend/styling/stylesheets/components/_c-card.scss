@@ -1,0 +1,83 @@
+//================================================================================================================
+//  *   Chapther
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//  *   CH02 - Main Component
+//  *   CH03 - Fixed Card Bottom
+
+
+
+//================================================================================================================
+//  *   CH01 - Setup Variabels
+//================================================================================================================
+$card-background: $white !default;
+$card-background-primary: $main-100;
+$card-background-warning: $warning-default;
+$card-background-positive: $positive-default;
+$card-background-negative: $negative-default;
+
+$card-border-radius: 8px;
+$card-box-shadow: rgba(0, 0, 0, .08);
+
+
+//================================================================================================================
+//  *   CH02 - Main Component
+//================================================================================================================
+.c-card {
+    background-color: $card-background;
+    border-radius: $card-border-radius;
+    box-shadow: 0 4px 24px $card-box-shadow;
+
+    &.primary {
+        background-color: $card-background-primary;
+    }
+
+    &.warning {
+        background-color: $card-background-warning;
+    }
+
+    &.positive {
+        background-color: $card-background-positive;
+    }
+
+    &.negative {
+        background-color: $card-background-negative;
+    }
+
+    .c-card-header {
+        padding-bottom: 15px;
+        padding-top: 15px;
+
+        + .c-card-body {
+            padding-top: 0;
+        }
+    }
+
+    .c-card-body {
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+}
+
+
+//================================================================================================================
+//  *   CH03 - Fixed Card Bottom
+//================================================================================================================
+.c-fixed-card-bottom {
+    @include fixed(bottom 0 left 0);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: 0px -8px 24px $card-box-shadow;
+    transform: translateY(0);
+    transition: .3s all ease;
+    width: 100%;
+    z-index: 50;
+
+    &.is-hidden {
+        transform: translateY(100%);
+    }
+
+    .o-button {
+        width: 100%;
+    }
+}
